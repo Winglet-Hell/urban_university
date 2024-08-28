@@ -12,4 +12,4 @@ test_function()
 
 # Попытка вызвать inner_function вне функции test_function приведет к ошибке,
 # так как она не определена в глобальной области видимости.
-inner_function()
+# inner_function()
