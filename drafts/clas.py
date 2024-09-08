@@ -1,36 +1,28 @@
-# Регистрация пользователей с использованием классов
-
-
-class User:
-    """
-    Создайте класс User, у которого есть: конструктор __init__,
-    который принимает имя и пароль.
-    """
-
-    def __init__(self, name, password, password_confirmation):
+# Создаем родительский класс
+class Vehicle:
+    def __init__(self, name, speed):
         self.name = name
-        if password == password_confirmation:
-            self.password = password
-        else:
-            raise ValueError("Passwords do not match")
+        self.speed = speed
+
+    def move(self, speed):
+        # Увеличивает скорость на 10 км/ч
+        self.speed += 10
 
 
-class UserDB:
-    def __init__(self):
-        self.users = []
-
-    def add_user(self, user):
-        self.users.append(user)
-
-    def get_user(self, name):
-        for user in self.users:
-            if user.name == name:
-                return user
-        return None
+class Car(Vehicle):
+    def honk(self, name):
+        print(f"{name} Сигналит beep-beep!")
 
 
-User1 = User("John", "123", "123")
-Db = UserDB()
-Db.add_user(User1)
-CurrentUser = Db.get_user("John")
-print(CurrentUser.password)
+class Bicycle(Vehicle):
+    def ring_bell(self, name):
+        print(f"{name} Сигналит Дзинь-дзинь!")
+
+
+# Создаем объекты классов
+v1 = Car("Audi", 100)
+v2 = Bicycle("Stels", 20)
+v1_speed = v1.move(1)
+print(v1_speed)
+v2_speed = v2.move(1)
+print(v2_speed)
