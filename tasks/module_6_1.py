@@ -5,15 +5,6 @@ class Animal:
         self.fed = False  # Не накормлено
         self.name = name  # Имя
 
-
-class Plant:
-    def __init__(self, name):
-        self.edible = False  # Несъедобное
-        self.name = name  # Имя
-
-
-# Наследники Mammal и Predator от Animal
-class Mammal(Animal):
     def eat(self, food):
         if isinstance(food, Plant):
             if food.edible:
@@ -24,15 +15,19 @@ class Mammal(Animal):
                 self.alive = False  # Погибает
 
 
+class Plant:
+    def __init__(self, name):
+        self.edible = False  # Несъедобное
+        self.name = name  # Имя
+
+
+# Наследники Mammal и Predator от Animal
+class Mammal(Animal):
+    pass  # Использует метод eat от Animal
+
+
 class Predator(Animal):
-    def eat(self, food):
-        if isinstance(food, Plant):
-            if food.edible:
-                print(f"{self.name} съел {food.name}")
-                self.fed = True
-            else:
-                print(f"{self.name} не стал есть {food.name}")
-                self.alive = False
+    pass  # Использует метод eat от Animal
 
 
 # Наследники Flower и Fruit от Plant
@@ -53,7 +48,7 @@ a2 = Mammal("Хатико")
 p1 = Flower("Цветик семицветик")
 p2 = Fruit("Заводной апельсин")
 
-# Действия согласно заданию
+# Действия по заданию
 print(a1.name)
 print(p1.name)
 
